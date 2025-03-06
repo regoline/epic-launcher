@@ -7,6 +7,12 @@ Atualmente o launcher oficial suporta apenas o sistema operacional Windows.
 ## Epic! Launcher Linux
 Ainda que seja possível instalar o Epic! Launcher em outros sistemas operacionais com a ajuda de softwares terceiros (por exemplo, [Wine](https://www.winehq.org/)), a idéia foi criar um software nativo para Linux, que funcionasse como um executável, sem muitas intervenções dos usuários.
 
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/aaca649c-55e1-4c89-b477-af1c476bc17c" />
+</p>
+
+
 ## Como funciona
 
 Basicamente é um script em Python, utilizando Tk/Tkinter para a parte gráfica, que faz o download dos arquivos do servidor do Epic! Shard.
