@@ -31,7 +31,7 @@ Após os arquivos baixados, ele executa o [ClassicUO](https://www.classicuo.eu) 
 
 Para distribuições ubuntu:
 ```
-sudo apt install python3 pip
+sudo apt install python3
 ```
 
 A parte gráfica foi criada usando PyQt5, portanto é necessário instalar os módulos necessários para funcionar:
