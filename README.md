@@ -22,7 +22,38 @@ Após os arquivos baixados, ele executa o [ClassicUO](https://www.classicuo.eu) 
 > /home/usuario/.epic_shard_launcher/state.json que contém os hashes dos arquivos que você baixou
 > 
 > /home/usuario/.epic_shard_launcher/config.json que vai salvar o diretório que você escolheu para sua instalação.
-> 
+
+## Como rodar o binário (releases)
+
+### Versão Beta e Superiores
+
+É preciso ter o Python instalado em sua máquina para rodá-lo.
+
+Para distribuições ubuntu:
+```
+sudo apt install python3 pip
+```
+
+A parte gráfica foi criada usando PyQt5, portanto é necessário instalar os módulos necessários para funcionar:
+```
+sudo apt install libxcb-xinerama0
+sudo apt install libxkbcommon-x11-0
+sudo apt install libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-shape0 libxcb-xfixes0
+sudo apt install libcanberra-gtk-module
+```
+Com as dependências instaladas, basta executar o binário dando duplo click nele, ou via console rodando ./epic_launcher
+
+### Versão Alpha
+
+É preciso ter o Python e instalado em sua máquina para compilar o programa.
+
+Para distribuições ubuntu:
+```
+sudo apt install python3
+```
+
+Com as dependências instaladas, basta executar o binário dando duplo click nele, ou via console rodando ./epic_launcher
+
 
 ## Como compilar o Epic! Launcher Linux
 
