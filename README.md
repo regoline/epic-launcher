@@ -28,6 +28,30 @@ Após os arquivos baixados, ele executa o [ClassicUO](https://www.classicuo.eu) 
 
 ### Dependências
 
+### Versão Beta e Superiores
+
+É preciso ter o Python e o PIP instalados em sua máquina para compilar o programa.
+
+Para distribuições ubuntu:
+```
+sudo apt install python3 pip
+```
+
+A parte gráfica foi criada usando PyQt5, portanto é necessário instalar os módulos necessários para funcionar:
+```
+sudo apt install libxcb-xinerama0
+sudo apt install libxkbcommon-x11-0
+sudo apt install libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-shape0 libxcb-xfixes0
+sudo apt install libcanberra-gtk-module
+```
+
+Como esse aplicativo utiliza alguns módulos do python, é preciso instalá-los também.
+```
+pip install PyQt5 pyinstaller requests
+```
+
+### Versão Alpha
+
 É preciso ter o Python e o PIP instalados em sua máquina para compilar o programa.
 
 Para distribuições ubuntu:
@@ -40,7 +64,30 @@ Como esse aplicativo utiliza alguns módulos do python, é preciso instalá-los 
 pip install cx_Freeze pillow requests
 ```
 
-### Rodando e compilando
+## Rodando e gerando o executável
+
+### Versão Beta e Superiores
+
+Com as dependências instaladas, você pode rodar o launcher.py:
+
+```
+python3 launcher.py
+```
+
+Caso queira gerar um executável
+```
+pyinstaller launcher.py
+```
+
+Isso gerará uma pasta chamada dist e lá você encontrará o launcher.
+Para executar o launcher, dê duplo clique nele, ou execute via linha de comando:
+
+```
+./epic_launcher
+```
+
+
+### Versão Alpha
 
 Com as dependências instaladas, você pode rodar o main.py:
 
@@ -61,9 +108,19 @@ Para executar o launcher, dê duplo clique nele, ou execute via linha de comando
 ```
 
 
-### Problemas e limitações conhecidas
+## Problemas e limitações conhecidas
 
 1. Caso tenha algum problema em instalar os módulos do Python (eu tive para o pillow) tente criar um venv no diretório onde está o código fonte:
+
+#### Versão Beta e Superiores
+
+```
+python3 -m venv epic_launcher_env
+source epic_launcher_env/bin/activate
+pip install PyQt5 pyinstaller requests
+```
+
+#### Versão Alpha
 
 ```
 python3 -m venv epic_launcher_env
