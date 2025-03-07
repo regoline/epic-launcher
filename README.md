@@ -171,6 +171,37 @@ pip install cx_Freeze pillow requests
 
 4. Alguns erros de hashing podem acontecer, pois não batem com o hash do servidor, mas isso não deve ser um problema por hora e está fora do alcance desse software (a tabela de hash do lado do servidor parece estar desatualizada)
  
+### Erros de driver / visualização
+
+Caso receba o erro:
+```
+MESA: error: ZINK: failed to choose pdev
+glx: failed to create drisw screen
+```
+
+Você pode tentar atualizar as bibliotecas do mesa/glx (sob sua conta e risco)
+```
+sudo apt install libgl1-mesa-glx libgl1-mesa-dri libglu1-mesa
+sudo apt install mesa-utils
+```
+
+### Verifique seus drivers gráficos!
+
+Para GPUs Intel: 
+```
+sudo apt install xserver-xorg-video-intel
+```
+
+Para GPUs NVIDIA:
+```
+sudo apt install nvidia-driver-<version>
+```
+
+Para GPUs AMD:
+
+```
+sudo apt install xserver-xorg-video-amdgpu
+```
 
 
 ## Instalação do Razor
