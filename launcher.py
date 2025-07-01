@@ -253,7 +253,7 @@ class DownloadWorker(QObject):
 class GameLauncher(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("EPIC Shard Launcher - Linux Beta 0.1")
+        self.setWindowTitle("EPIC Shard Launcher - Beta 1.0")
         self.setGeometry(100, 100, 659, 519)
 
         # Load background image
@@ -641,13 +641,25 @@ class GameLauncher(QMainWindow):
     def make_classicuo_executable(self):
         """Make ClassicUO executable."""
         classicuo_path = os.path.join(self.install_path, "ClassicUO", "ClassicUO.bin.x86_64")
+        
+        classicuo_file = ""
+        if sys.platform.startswith('linux'):
+            classicuo_file = "ClassicUO.bin.x86_64"
+        elif sys.platform == 'darwin':  # macOS
+            classicuo_file = "ClassicUO.bin.osx"
+        else:
+            print(f"Sistema operacional não suportado: {sys.platform}")
+            return
+        
+        
+        classicuo_path = os.path.join(self.install_path, "ClassicUO", classicuo_file)
         if os.path.exists(classicuo_path):
             try:
                 os.chmod(classicuo_path, 0o755)
             except Exception as e:
-                print(f"Erro ao marcar ClassicUO.bin.x86_64 como executável: {e}")
+                print(f"Erro ao marcar {classicuo_file} como executável: {e}")
         else:
-            print(f"Arquivo ClassicUO.bin.x86_64 não encontrado em {classicuo_path}")
+            print(f"Arquivo {classicuo_file} não encontrado em {classicuo_path}")
 
     def launch_game(self):
         """Launch the game."""
@@ -657,22 +669,31 @@ class GameLauncher(QMainWindow):
             self.download_thread.wait()
 
         self.copy_settings_file()
+        
+        classicuo_file = ""
+        if sys.platform.startswith('linux'):
+            classicuo_file = "ClassicUO.bin.x86_64"
+        elif sys.platform == 'darwin':  # macOS
+            classicuo_file = "ClassicUO.bin.osx"
+        else:
+            QMessageBox.critical(self, "Erro", f"Sistema operacional não suportado: {sys.platform}")
+            return
 
-        classicuo_path = os.path.join(self.install_path, "ClassicUO", "ClassicUO.bin.x86_64")
+        classicuo_path = os.path.join(self.install_path, "ClassicUO", classicuo_file)
         if os.path.exists(classicuo_path):
             try:
                 import subprocess
                 # Launch the game in a new process
                 subprocess.Popen([classicuo_path], cwd=os.path.dirname(classicuo_path))
-                print(f"Game launched successfully: {classicuo_path}")
+                print(f"Jogo executado corretamente: {classicuo_path}")
                 
                 # Start the countdown after launching the game
                 self.start_countdown()
             except Exception as e:
-                print(f"Failed to launch the game: {e}")
+                print(f"Falha ao executar o jogo: {e}")
                 QMessageBox.critical(self, "Erro", f"Falha ao iniciar o jogo: {e}")
         else:
-            print(f"Game executable not found: {classicuo_path}")
+            print(f"Executavel não encontrado: {classicuo_path}")
             QMessageBox.critical(self, "Erro", f"Arquivo ClassicUO.bin.x86_64 não encontrado em {classicuo_path}")
 
     def closeEvent(self, event):
