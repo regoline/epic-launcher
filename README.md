@@ -113,14 +113,14 @@ python3 launcher.py
 
 Caso queira gerar um executável
 ```
-pyinstaller launcher.py
+pyinstaller --name=launcher --onefile --windowed --add-data="media:media" --add-data="config:config" launcher.py
 ```
 
 Isso gerará uma pasta chamada dist e lá você encontrará o launcher.
 Para executar o launcher, dê duplo clique nele, ou execute via linha de comando:
 
 ```
-./epic_launcher
+./launcher
 ```
 
 
