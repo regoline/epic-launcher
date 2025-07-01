@@ -113,7 +113,7 @@ python3 launcher.py
 
 Caso queira gerar um executável
 ```
-pyinstaller --name=launcher --onefile --windowed --add-data="media:media" --add-data="config:config" launcher.py
+pyinstaller --name=launcher --onefile --windowed --add-data="media:media" --add-data="config:config" launcher.py 
 ```
 
 Isso gerará uma pasta chamada dist e lá você encontrará o launcher.
