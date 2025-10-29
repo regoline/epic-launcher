@@ -683,8 +683,18 @@ class GameLauncher(QMainWindow):
         if os.path.exists(classicuo_path):
             try:
                 import subprocess
+                env = os.environ.copy()
+                CLASSICUO_DIR = os.path.dirname(classicuo_path)
+
+                if 'LD_LIBRARY_PATH' in env and env['LD_LIBRARY_PATH']:
+                    env['LD_LIBRARY_PATH'] = f"{CLASSICUO_DIR}:{env['LD_LIBRARY_PATH']}"
+                else:
+                    env['LD_LIBRARY_PATH'] = CLASSICUO_DIR
+                
+                print(f"[DEBUG] LD_LIBRARY_PATH modificado: {env.get('LD_LIBRARY_PATH')}")
+
                 # Launch the game in a new process
-                subprocess.Popen([classicuo_path], cwd=os.path.dirname(classicuo_path))
+                subprocess.Popen([classicuo_path], cwd=os.path.dirname(classicuo_path), env=env)
                 print(f"Jogo executado corretamente: {classicuo_path}")
                 
                 # Start the countdown after launching the game
